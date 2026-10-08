@@ -65,6 +65,10 @@ akselerasi dan orientasi dari IMU atau menggunakan kamera stereo sehingga depth 
 ### Hasil, galat, dan keterbatasan solusi
 
 Dengan menggunakan gambar sample ![gambar1](../sample/img1.jpg) dan ![gambar2](../sample/img2.jpg) didapat hasil
+Dari gambar di atas dihasilkan ekstraksi dan pencocokan fitur ![feature match](../sample/feature_matching_res.jpg)
+Fitur fitur cocok yang didapatkan dari gambar tersebut dan intrinsic kamera yang diketahui digunakan untuk menghitung essential matrix. Dengan
+dekomposisi essential matrix didapat matrix rotasi dan translasi kamera.
+
 posisi dan orientasi kamera dalam homogeneous matrix:
 
 ```
