@@ -1,7 +1,5 @@
 #include "camera_motion.hpp"
 
-#include <eigen3/Eigen/src/Geometry/Transform.h>
-
 namespace visual_odometry {
 
 Camera::Camera(cv::Mat K) { K_ = K; }
@@ -21,7 +19,7 @@ void Camera::estimatePose() {
   std::vector<cv::Point2f> points1, points2;
   for (int i = 0; i < (int)matches_.size(); i++) {
     points1.push_back(keypoints_1_[matches_[i].queryIdx].pt);
-    points2.push_back(keypoints_2_[matches_[i].queryIdx].pt);
+    points2.push_back(keypoints_2_[matches_[i].trainIdx].pt);
   }
 
   // fundamental matrix
@@ -37,12 +35,13 @@ void Camera::estimatePose() {
   cv::Mat R, t;
   Eigen::Matrix3d R_eigen;
   Eigen::Vector3d t_eigen;
-  cv::recoverPose(essential_matrix_, points1, points2, R, t, K_);
+  cv::recoverPose(essential_matrix_, points1, points2, K_, R, t);
   cv::cv2eigen(R, R_eigen);
   cv::cv2eigen(t, t_eigen);
   camera_pose_ = Eigen::Isometry3d::Identity();
   camera_pose_.translation() = t_eigen;
   camera_pose_.linear() = R_eigen;
+  camera_pose_ = camera_pose_.inverse();
 }
 
 }  // namespace visual_odometry
