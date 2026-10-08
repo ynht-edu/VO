@@ -13,48 +13,43 @@ This is a simple visual odometry.
 1. Clone the repo
 
 ```bash
-git clone https://github.com/ynht-edu/VO.git
+   git clone https://github.com/ynht-edu/VO.git
 ```
 
-2. build
+2. Build
 
 ```bash
-cd VO && mkdir build && cd build
-cmake ..
-make
+   cd VO && mkdir build && cd build
+   cmake ..
+   make
 ```
 
 ## Usage
 
-1. currently the camera intrinsic parameters in simple pinhole parser
-   are hardcoded so you have to change it in `src/main.cpp`:
-   ```cpp
+1. Currently the camera intrinsic parameters in the simple pinhole parser
+   are hardcoded, so you have to change them in `src/main.cpp`:
 
-   ```
-
-// change this
-double fx = 3035;
-double fy = 3028;
-double cx = 2016;
-double cy = 1512;
-
+```cpp
+   // change this
+   double fx = 3035;
+   double fy = 3028;
+   double cx = 2016;
+   double cy = 1512;
 ```
 
-```
-
-2. compile
+2. Compile
 
 ```bash
-cd build
-make
+   cd build
+   make
 ```
 
-3. run the simple camera motion (yeah still basic)
+3. Run the simple camera motion (yeah, still basic)
 
 ```bash
-./slam_technologies/visual_odometry/visual_odometry img1.jpg img2.jpg
+   ./slam_technologies/visual_odometry/visual_odometry img1.jpg img2.jpg
 ```
 
 ## Docs
 
-For the detailed explanation navigate to [docs](./docs/)
+For the detailed explanation, navigate to [docs](./docs/).
